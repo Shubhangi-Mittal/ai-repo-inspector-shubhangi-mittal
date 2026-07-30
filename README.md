@@ -78,4 +78,6 @@ src/report.ts       Markdown report generation
 test/               public starter tests
 ```
 
-When finished, reply with your repository URL.
+When finished, submit via **Security → Report a vulnerability** on this
+repo — see `SECURITY.md` for exactly what to include. Do not reply by email;
+that submission channel is not monitored.
