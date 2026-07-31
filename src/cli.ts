@@ -15,7 +15,7 @@ function parseArgs(argv: string[]): Args {
   for (let index = 1; index < argv.length; index++) {
     const token = argv[index];
     if (token === "--repo") {
-      args.repositoryPath = argv[++index]?.split(" ")[0];
+      args.repositoryPath = argv[++index];
     } else if (token === "--base-ref") {
       args.baseRef = argv[++index];
     } else if (token === "--format") {
@@ -41,8 +41,9 @@ async function main() {
     validationCommands: args.validations,
     format: args.format,
   });
-  writeFileSync("review-report.md", report, "utf8");
-  console.log("Review report written to review-report.md");
+  const outputPath = args.format === "json" ? "review-report.json" : "review-report.md";
+  writeFileSync(outputPath, report, "utf8");
+  console.log(`Review report written to ${outputPath}`);
 }
 
 main().catch((error) => {
